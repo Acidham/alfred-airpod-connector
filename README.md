@@ -6,6 +6,8 @@ Supports AirPod1/2, AirPod Pro
 
 Usage: `airpd`
 
+<img src="README.assets/airpd_screen.png" alt="airpd_screen" style="zoom:40%;" />
+
 ## Required
 
 1. Python 3
