@@ -14,6 +14,8 @@ AIRPD_PRODUCT_INDX = {
 
 }
 
+os.environ['PATH'] = os.popen('./_sharedresources "blueutil"').readline()
+
 
 def get_airpods(device_id: str) -> tuple:
     """
@@ -40,7 +42,8 @@ def get_airpods(device_id: str) -> tuple:
 
 
 def get_avail_airpods() -> dict:
-    jsn = json.loads(os.popen('/usr/local/bin/blueutil --paired --format json').read())
+    #jsn = json.loads(os.popen('/usr/local/bin/blueutil --paired --format json').read())
+    jsn = json.loads(os.popen('blueutil --paired --format json').read())
     out_dict = {}
     for i in jsn:
         address = i.get('address')
@@ -58,10 +61,11 @@ def get_avail_airpods() -> dict:
 
 
 def is_blueutil() -> bool:
-    if os.path.exists("/usr/local/bin/blueutil"):
-        return True
-    else:
+    blueutil = os.popen("blueutil -v").readline()
+    if blueutil == "":
         return False
+    else:
+        return True
 
 
 wf = Items()

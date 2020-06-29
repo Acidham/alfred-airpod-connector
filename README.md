@@ -10,9 +10,7 @@ Usage: `airpd`
 
 ## Required
 
-1. Python 3
-
-2. blueutil `brew install blueutil`
+* Python 3
 
 ## TIP
 

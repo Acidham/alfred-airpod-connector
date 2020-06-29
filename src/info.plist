@@ -377,8 +377,6 @@ fi</string>
 	<key>readme</key>
 	<string>Another AirPod Connector requires no configuration
 
-blueutil required: brew install blueutil
-
 TIP: To show connection status on Desktop use Uebersicht, check it out: 
 
 Uebersicht: https://github.com/felixhageloh/uebersicht
@@ -453,7 +451,7 @@ Uebersicht-Widget: https://github.com/Acidham/uebersicht-airpod-status</string>
 	<key>variablesdontexport</key>
 	<array/>
 	<key>version</key>
-	<string>1.0</string>
+	<string>1.1</string>
 	<key>webaddress</key>
 	<string>https://github.com/Acidham/alfred-airpod-connector</string>
 </dict>
