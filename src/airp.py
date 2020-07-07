@@ -49,10 +49,10 @@ def paired_airpods() -> dict:
     Returns:
         dict: dict with paired AirPod name including dict with info
     """
-    jsn = json.loads(os.popen('blueutil --paired --format json').read())
+    jsn: dict = json.loads(os.popen('blueutil --paired --format json').read())
     out_dict = {}
     for i in jsn:
-        address = i.get('address')
+        address: str = i.get('address')
         prod_label, prod_id, vendor_id = airpod_info(address)
         if vendor_id == 76 and prod_id in AIRPD_PRODUCT_INDX.keys():
             out_dict.update(
@@ -73,35 +73,40 @@ def is_blueutil() -> bool:
     Returns:
         bool: True=available, False=not found
     """
-    blueutil = os.popen("blueutil -v").readline()
+    blueutil: str = os.popen("blueutil -v").readline()
     if blueutil == "":
         return False
     else:
         return True
 
 
-wf = Items()
-if is_blueutil():
-    for ap_name, status in paired_airpods().items():
-        adr = status.get('address')
-        ap_type = status.get('prod_label')
-        is_connected = status.get('connected')
-        con_str = "connected, Press \u23CE to disconnect..." if is_connected else "NOT connected, \u23CE to connect..."
-        ico = f"{ap_type}.png" if is_connected else f"{ap_type}_case.png"
-        con_switch = "connected" if is_connected else "disconnected"
+def main():
+    wf = Items()
+    if is_blueutil():
+        for ap_name, status in paired_airpods().items():
+            adr: str = status.get('address')
+            ap_type: str = status.get('prod_label')
+            is_connected: bool = status.get('connected')
+            con_str: str = "connected, Press \u23CE to disconnect..." if is_connected else "NOT connected, \u23CE to connect..."
+            ico: str = f"{ap_type}.png" if is_connected else f"{ap_type}_case.png"
+            con_switch: str = "connected" if is_connected else "disconnected"
+            wf.setItem(
+                title=ap_name,
+                subtitle=f"{ap_name} is {con_str}",
+                arg=f"{adr};{con_switch}",
+                uid=adr
+            )
+            wf.setIcon(ico, "image")
+            wf.addItem()
+    else:
         wf.setItem(
-            title=ap_name,
-            subtitle=f"{ap_name} is {con_str}",
-            arg=f"{adr}|{con_switch}",
-            uid=adr
+            title="BLUEUTIL required!",
+            subtitle='Please install with "brew install blueutil" first',
+            valid=False
         )
-        wf.setIcon(ico, "image")
         wf.addItem()
-else:
-    wf.setItem(
-        title="BLUEUTIL required!",
-        subtitle='Please install with "brew install blueutil" first',
-        valid=False
-    )
-    wf.addItem()
-wf.write()
+    wf.write()
+
+
+if __name__ == "__main__":
+    main()
