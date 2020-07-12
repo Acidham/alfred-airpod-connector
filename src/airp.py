@@ -10,7 +10,8 @@ from Alfred3 import Items, Tools
 AIRPD_PRODUCT_INDX = {
     8206: "airpodpro",
     8194: "airpod1",
-    8207: "airpod2"
+    8207: "airpod2",
+    8203: "powerbeatspro"
 
 }
 
@@ -92,7 +93,7 @@ def main():
             con_switch: str = "connected" if is_connected else "disconnected"
             wf.setItem(
                 title=ap_name,
-                subtitle=f"{ap_name} is {con_str}",
+                subtitle=f"{ap_name} are {con_str}",
                 arg=f"{adr};{con_switch}",
                 uid=adr
             )

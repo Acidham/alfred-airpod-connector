@@ -2,7 +2,7 @@
 
 Another Alfred AirPod Connector which requires no configuration and supports more than one AirPods
 
-Supports AirPod1/2, AirPod Pro
+Supports AirPod1/2, AirPod Pro, Powerbeats Pro
 
 Usage: `airpd`
 
