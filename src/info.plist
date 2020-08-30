@@ -56,7 +56,7 @@
 				<key>argumenttype</key>
 				<integer>2</integer>
 				<key>escaping</key>
-				<integer>0</integer>
+				<integer>102</integer>
 				<key>keyword</key>
 				<string>airpd</string>
 				<key>queuedelaycustom</key>
@@ -70,7 +70,7 @@
 				<key>runningsubtext</key>
 				<string></string>
 				<key>script</key>
-				<string></string>
+				<string>./py3.sh airp.py "$1"</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -80,7 +80,7 @@
 				<key>title</key>
 				<string>Airpods Connector</string>
 				<key>type</key>
-				<integer>8</integer>
+				<integer>0</integer>
 				<key>withspace</key>
 				<false/>
 			</dict>
@@ -244,7 +244,7 @@ Uebersicht-Widget: https://github.com/Acidham/uebersicht-airpod-status</string>
 	<key>variablesdontexport</key>
 	<array/>
 	<key>version</key>
-	<string>1.2.2</string>
+	<string>1.2.3</string>
 	<key>webaddress</key>
 	<string>https://github.com/Acidham/alfred-airpod-connector</string>
 </dict>
