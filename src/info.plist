@@ -244,7 +244,7 @@ Uebersicht-Widget: https://github.com/Acidham/uebersicht-airpod-status</string>
 	<key>variablesdontexport</key>
 	<array/>
 	<key>version</key>
-	<string>1.2.3</string>
+	<string>1.2.4</string>
 	<key>webaddress</key>
 	<string>https://github.com/Acidham/alfred-airpod-connector</string>
 </dict>
