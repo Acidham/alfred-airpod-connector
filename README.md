@@ -1,6 +1,6 @@
 # AirPod Connector
 
-Another Alfred AirPod Connector which requires no configuration and supports more than one AirPods
+Another Alfred AirPod Connector with zero configuration. Supports more than one pair of AirPods
 
 Supports AirPod1/2, AirPod Pro, Powerbeats Pro
 
