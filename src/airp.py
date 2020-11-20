@@ -82,6 +82,7 @@ def is_blueutil() -> bool:
 
 
 def main():
+    query = Tools.getArgv(1)
     wf = Items()
     if is_blueutil():
         for ap_name, status in paired_airpods().items():
@@ -91,14 +92,15 @@ def main():
             con_str: str = "connected, Press \u23CE to disconnect..." if is_connected else "NOT connected, \u23CE to connect..."
             ico: str = f"{ap_type}.png" if is_connected else f"{ap_type}_case.png"
             con_switch: str = "connected" if is_connected else "disconnected"
-            wf.setItem(
-                title=ap_name,
-                subtitle=f"{ap_name} are {con_str}",
-                arg=f"{adr};{con_switch}",
-                uid=adr
-            )
-            wf.setIcon(ico, "image")
-            wf.addItem()
+            if query == "" or query.lower() in ap_name.lower():
+                wf.setItem(
+                    title=ap_name,
+                    subtitle=f"{ap_name} are {con_str}",
+                    arg=f"{adr};{con_switch}",
+                    uid=adr
+                )
+                wf.setIcon(ico, "image")
+                wf.addItem()
     else:
         wf.setItem(
             title="BLUEUTIL required!",
