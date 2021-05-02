@@ -8,7 +8,7 @@ import sys
 from Alfred3 import Items, Tools
 
 AIRPD_PRODUCT_INDX = {
-    8202: "airpodsmax",
+    8202: "airpodmax",
     8206: "airpodpro",
     8194: "airpod1",
     8207: "airpod2",
