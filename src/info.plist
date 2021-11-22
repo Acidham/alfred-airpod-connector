@@ -218,9 +218,9 @@ Uebersicht-Widget: https://github.com/Acidham/uebersicht-airpod-status</string>
 		<key>2378081C-843E-45C6-B549-1B0FFD46EF7C</key>
 		<dict>
 			<key>xpos</key>
-			<integer>35</integer>
+			<integer>30</integer>
 			<key>ypos</key>
-			<integer>180</integer>
+			<integer>35</integer>
 		</dict>
 		<key>CEF521D9-DC81-4534-B6D8-373A0874E2B7</key>
 		<dict>
@@ -229,22 +229,22 @@ Uebersicht-Widget: https://github.com/Acidham/uebersicht-airpod-status</string>
 			<key>note</key>
 			<string>OneUpdater</string>
 			<key>xpos</key>
-			<integer>405</integer>
+			<integer>400</integer>
 			<key>ypos</key>
-			<integer>315</integer>
+			<integer>170</integer>
 		</dict>
 		<key>E50C57EE-3592-4CF2-8C4D-FCEFA9AC1E1D</key>
 		<dict>
 			<key>xpos</key>
-			<integer>405</integer>
+			<integer>400</integer>
 			<key>ypos</key>
-			<integer>185</integer>
+			<integer>40</integer>
 		</dict>
 	</dict>
 	<key>variablesdontexport</key>
 	<array/>
 	<key>version</key>
-	<string>1.2.7</string>
+	<string>1.2.8</string>
 	<key>webaddress</key>
 	<string>https://github.com/Acidham/alfred-airpod-connector</string>
 </dict>

@@ -33,7 +33,7 @@ def airpod_info(device_id: str) -> tuple:
     with open("/Library/Preferences/com.apple.Bluetooth.plist", "rb") as f:
         pl = plistlib.load(f)
     devices: dict = pl.get("DeviceCache")
-    ret: tuple = tuple()
+    ret: tuple = (None, None, None)
     for d, v in devices.items():
         if device_id in d:
             product_id: str = v.get("ProductID")
