@@ -2,8 +2,6 @@
 
 import json
 import os
-import plistlib
-import sys
 
 from Alfred3 import Items, Tools
 
@@ -16,7 +14,7 @@ AIRPD_PRODUCT_INDX = {
 }
 
 
-def paired_airpods() -> dict:
+def get_paired_airpods() -> dict:
     """
     Get paired AirPods including info
 
@@ -24,7 +22,15 @@ def paired_airpods() -> dict:
         dict: dict with paired AirPod name including dict with info
     """
     jsn: dict = json.loads(os.popen('system_profiler SPBluetoothDataType -json').read())
-    devices: dict = jsn['SPBluetoothDataType'][0]['devices_list']
+    bt_data: dict = jsn['SPBluetoothDataType'][0]
+    # macos <= 12.3
+    try:
+        devices: dict = bt_data['devices_list']
+    # macos >= 12.3
+    except KeyError as e:
+        connected_devices: list = bt_data['device_connected'] if 'device_connected' in bt_data else []
+        not_connected_devices: list = bt_data['device_not_connected']
+        devices = connected_devices + not_connected_devices if 'device_not_connected' in bt_data else []
     out_dict = {}
     for i in devices:
         for d_name, d_info in i.items():
@@ -48,7 +54,7 @@ def paired_airpods() -> dict:
 def main():
     query = Tools.getArgv(1)
     wf = Items()
-    for ap_name, status in paired_airpods().items():
+    for ap_name, status in get_paired_airpods().items():
         adr: str = status.get('address')
         ap_type: str = status.get('prod_label')
         is_connected: bool = True if status.get('connected') == 'Yes' else False
