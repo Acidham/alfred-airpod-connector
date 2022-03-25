@@ -23,7 +23,8 @@ def get_paired_airpods() -> dict:
     """
     jsn: dict = json.loads(os.popen('system_profiler SPBluetoothDataType -json').read())
     bt_data: dict = jsn['SPBluetoothDataType'][0]
-    # macos <= 12.3
+    # With 12.3 and newer json response has changed
+    # macos < 12.3
     try:
         devices: dict = bt_data['devices_list']
     # macos >= 12.3
@@ -39,15 +40,18 @@ def get_paired_airpods() -> dict:
                 prod_id = int(d_info.get('device_productID', 0), 16)
                 vendor_id: str = int(d_info.get('device_vendorID', 0), 16)
                 prod_label = AIRPD_PRODUCT_INDX.get(prod_id)
-                if vendor_id == 76 and prod_id in AIRPD_PRODUCT_INDX.keys():
-                    out_dict.update(
-                        {d_name:
-                            {"address": address,
-                             "connected": d_info.get('device_connected'),
-                             "prod_label": prod_label
-                             }
+                if connected_devices:  # macos >= 12.3
+                    device_connected: str = "Yes" if i in connected_devices else "No"
+                else:  # macos < 12.3
+                    device_connected: str = d_info.get('device_connected')
+                out_dict.update(
+                    {d_name:
+                        {"address": address,
+                            "connected": device_connected,
+                            "prod_label": prod_label
                          }
-                    )
+                     }
+                )
     return out_dict
 
 
