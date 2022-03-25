@@ -51,7 +51,7 @@ def get_paired_airpods() -> dict:
                             "prod_label": prod_label
                          }
                      }
-                )
+                ) if prod_id in AIRPD_PRODUCT_INDX else {}
     return out_dict
 
 
