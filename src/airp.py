@@ -27,6 +27,7 @@ def get_paired_airpods() -> dict:
     # macos < 12.3
     try:
         devices: dict = bt_data['devices_list']
+        connected_devices = False
     # macos >= 12.3
     except KeyError as e:
         connected_devices: list = bt_data['device_connected'] if 'device_connected' in bt_data else []
