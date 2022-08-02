@@ -5,6 +5,9 @@ import os
 
 from Alfred3 import Items, Tools
 
+# automatic blueutil installer
+os.environ['PATH'] = os.popen('./_sharedresources "blueutil"').readline()
+
 AIRPD_PRODUCT_INDX = {
     8202: "airpodmax",
     8206: "airpodpro",
