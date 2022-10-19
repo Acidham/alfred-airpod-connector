@@ -11,7 +11,7 @@ os.environ['PATH'] = os.popen('./_sharedresources "blueutil"').readline()
 AIRPD_PRODUCT_INDX = {
     8202: "airpodmax",
     8206: "airpodpro",
-    8212: "airpodpro2"
+    8212: "airpodpro2",
     8194: "airpod1",
     8207: "airpod2",
     8203: "powerbeatspro"
