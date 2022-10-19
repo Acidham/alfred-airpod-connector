@@ -212,7 +212,14 @@ fi</string>
 TIP: To show connection status on Desktop use Uebersicht, check it out: 
 
 Uebersicht: https://github.com/felixhageloh/uebersicht
-Uebersicht-Widget: https://github.com/Acidham/uebersicht-airpod-status</string>
+Uebersicht-Widget: https://github.com/Acidham/uebersicht-airpod-status
+
+## Supported headphones
+
+- AirPod1/2
+- AirPod Pro 1/2
+- AirPod Max
+- Powerbeats Pro</string>
 	<key>uidata</key>
 	<dict>
 		<key>2378081C-843E-45C6-B549-1B0FFD46EF7C</key>
@@ -246,7 +253,7 @@ Uebersicht-Widget: https://github.com/Acidham/uebersicht-airpod-status</string>
 	<key>variablesdontexport</key>
 	<array/>
 	<key>version</key>
-	<string>1.2.13</string>
+	<string>1.2.14</string>
 	<key>webaddress</key>
 	<string>https://github.com/Acidham/alfred-airpod-connector</string>
 </dict>
