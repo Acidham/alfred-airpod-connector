@@ -5,9 +5,6 @@ import os
 
 from Alfred3 import Items, Tools
 
-# automatic blueutil installer
-os.environ['PATH'] = os.popen('./_sharedresources "blueutil"').readline()
-
 AIRPD_PRODUCT_INDX = {
     8202: "airpodmax",
     8206: "airpodpro",
@@ -61,24 +58,36 @@ def get_paired_airpods() -> dict:
 
 
 def main():
+    # Check if Blueutil is installed
+    sh = os.popen('blueutil -v')
+    is_btutil = False if "not found" in sh else True
+
     query = Tools.getArgv(1)
     wf = Items()
-    for ap_name, status in get_paired_airpods().items():
-        adr: str = status.get('address')
-        ap_type: str = status.get('prod_label')
-        is_connected: bool = True if status.get('connected') == 'Yes' else False
-        con_str: str = "connected, Press \u23CE to disconnect..." if is_connected else "NOT connected, \u23CE to connect..."
-        ico: str = f"{ap_type}.png" if is_connected else f"{ap_type}_case.png"
-        con_switch: str = "connected" if is_connected else "disconnected"
-        if query == "" or query.lower() in ap_name.lower():
-            wf.setItem(
-                title=ap_name,
-                subtitle=f"{ap_name} are {con_str}",
-                arg=f"{adr};{con_switch}",
-                uid=adr
-            )
-            wf.setIcon(ico, "image")
-            wf.addItem()
+    if is_btutil:
+        for ap_name, status in get_paired_airpods().items():
+            adr: str = status.get('address')
+            ap_type: str = status.get('prod_label')
+            is_connected: bool = True if status.get('connected') == 'Yes' else False
+            con_str: str = "connected, Press \u23CE to disconnect..." if is_connected else "NOT connected, \u23CE to connect..."
+            ico: str = f"{ap_type}.png" if is_connected else f"{ap_type}_case.png"
+            con_switch: str = "connected" if is_connected else "disconnected"
+            if query == "" or query.lower() in ap_name.lower():
+                wf.setItem(
+                    title=ap_name,
+                    subtitle=f"{ap_name} are {con_str}",
+                    arg=f"{adr};{con_switch}",
+                    uid=adr
+                )
+                wf.setIcon(ico, "image")
+                wf.addItem()
+    else:
+        wf.setItem(
+            title="The workflow requires BLUEUTIL",
+            subtitle="Install with `brew install bluetuil`",
+            valid=False
+        )
+        wf.addItem()
     wf.write()
 
 

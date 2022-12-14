@@ -4,9 +4,6 @@ import os
 
 from Alfred3 import Tools
 
-# automatic blueutil installer
-os.environ['PATH'] = os.popen('./_sharedresources "blueutil"').readline()
-
 query = Tools.getArgv(1)
 adr, switch = tuple(query.split(";"))
 
