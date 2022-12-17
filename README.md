@@ -1,6 +1,6 @@
 # AirPod Connector
 
-Another Alfred AirPod Connector with zero configuration. Supports more than one pair of AirPods.
+Another Alfred AirPod Connector with zero configuration. Supports more than one pair of AirPods
 
 **Usage**: `airpd`
 
