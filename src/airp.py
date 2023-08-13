@@ -2,6 +2,7 @@
 
 import json
 import os
+import sys
 
 from Alfred3 import Items, Tools
 
@@ -63,22 +64,42 @@ def main():
     # Check if Blueutil is installed
     sh = os.popen('blueutil -v')
     is_btutil = False if "not found" in sh else True
-
+    switch_audio = os.environ["SwitchAudioSource_path"]
     query = Tools.getArgv(1)
     wf = Items()
+
+    # parses the current output device (and also strips the newline char so we can compare it below)
+    # this also serves as a test of whether switchaudio is installed. 
+    try: 
+        current_output = os.popen(f'{switch_audio} -c').read().rstrip("\n")
+    except:
+        pass
+    if current_output == "":
+        wf.setItem(
+            title="The workflow requires switchaudio-osx",
+            subtitle="Install with `brew install switchaudio-osx`",
+            valid=False
+        )
+        wf.addItem()
+        wf.write()
+        sys.exit()
+
+    
     if is_btutil:
         for ap_name, status in get_paired_airpods().items():
             adr: str = status.get('address')
             ap_type: str = status.get('prod_label')
             is_connected: bool = True if status.get('connected') == 'Yes' else False
-            con_str: str = "connected, Press \u23CE to disconnect..." if is_connected else "NOT connected, \u23CE to connect..."
+            is_audio_output: bool = True if ap_name == current_output else False
+            con_str: str = "connected ✅ " if is_connected else "NOT connected ❌ (Press \u23CE to move audio there) "
+            outp_str: str = " audio output ✅" if is_audio_output else " NOT selected as audio output ❌ (Press \u23CE to move audio there)"
             ico: str = f"{ap_type}.png" if is_connected else f"{ap_type}_case.png"
             con_switch: str = "connected" if is_connected else "disconnected"
             if query == "" or query.lower() in ap_name.lower():
                 wf.setItem(
                     title=ap_name,
-                    subtitle=f"{ap_name} are {con_str}",
-                    arg=f"{adr};{con_switch}",
+                    subtitle=f"{con_str} | {outp_str}" if is_connected else "",
+                    arg=f"{ap_name};{con_switch};{adr}",
                     uid=adr
                 )
                 wf.setIcon(ico, "image")
