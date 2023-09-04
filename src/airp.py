@@ -25,8 +25,8 @@ def get_paired_airpods() -> dict:
         dict: dict with paired AirPod name including dict with info
     """
     jsn: dict = json.loads(os.popen('system_profiler SPBluetoothDataType -json').read())
-    bt_data: dict = jsn['SPBluetoothDataType'][0]
-    # With 12.3 and newer json response has changed
+    bt_data: dict = jsn['SPBluetoothDataType'][0] if jsn else None
+    # With 12.3 and newer, json response has changed
     # macos < 12.3
     try:
         devices: dict = bt_data['devices_list']
