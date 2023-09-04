@@ -2,6 +2,7 @@
 
 import json
 import os
+import subprocess
 
 from Alfred3 import Items, Tools
 
@@ -59,14 +60,25 @@ def get_paired_airpods() -> dict:
     return out_dict
 
 
+def is_tool_installed(tool_name):
+    try:
+        result = subprocess.run([tool_name, "-h"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+
+        # Check the return code
+        if result.returncode == 0:
+            return True
+        else:
+            return False
+    except FileNotFoundError:
+        return False
+
+
 def main():
-    # Check if Blueutil is installed
-    sh = os.popen('blueutil -v')
-    is_btutil = False if "not found" in sh else True
+    # Check if blueutil is installed
 
     query = Tools.getArgv(1)
     wf = Items()
-    if is_btutil:
+    if is_tool_installed('blueutil'):
         for ap_name, status in get_paired_airpods().items():
             adr: str = status.get('address')
             ap_type: str = status.get('prod_label')
