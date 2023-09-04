@@ -74,11 +74,9 @@ def is_tool_installed(tool_name):
 
 
 def main():
-    # Check if blueutil is installed
-
     query = Tools.getArgv(1)
     wf = Items()
-    if is_tool_installed('blueutil'):
+    if is_tool_installed("blueutil"):
         for ap_name, status in get_paired_airpods().items():
             adr: str = status.get('address')
             ap_type: str = status.get('prod_label')
