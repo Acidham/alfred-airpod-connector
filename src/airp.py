@@ -96,8 +96,8 @@ def main():
     else:
         wf.setItem(
             title="The workflow requires BLUEUTIL",
-            subtitle="Install with `brew install blueutil`",
-            valid=False
+            subtitle="Press ENTER to let Alfred resolve dependencies...",
+            valid=True,
         )
         wf.addItem()
     wf.write()

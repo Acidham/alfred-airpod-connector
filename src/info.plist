@@ -12,7 +12,32 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
+				<string>508A3778-0A75-475B-9B1F-EFDEAE4D29DA</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>508A3778-0A75-475B-9B1F-EFDEAE4D29DA</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
 				<string>F7B4ECCA-A12E-43D0-9793-514BAB692AF2</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>1F299A3F-B00C-4E94-9C51-5F6D84477107</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>F8EAAE09-F987-4663-AADE-5A8EB1E9B8CF</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -34,6 +59,30 @@
 	<string>AirPods Connector</string>
 	<key>objects</key>
 	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>script</key>
+				<string>PATH=$PATH:/opt/bin/homebrew/
+./py3.sh con_manager.py "$1"</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string>con_manager.py</string>
+				<key>type</key>
+				<integer>5</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>F7B4ECCA-A12E-43D0-9793-514BAB692AF2</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
@@ -86,24 +135,55 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>conditions</key>
+				<array>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>5</integer>
+						<key>matchstring</key>
+						<string></string>
+						<key>outputlabel</key>
+						<string></string>
+						<key>uid</key>
+						<string>1F299A3F-B00C-4E94-9C51-5F6D84477107</string>
+					</dict>
+				</array>
+				<key>elselabel</key>
+				<string>else</string>
+				<key>hideelse</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.conditional</string>
+			<key>uid</key>
+			<string>508A3778-0A75-475B-9B1F-EFDEAE4D29DA</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>concurrently</key>
 				<false/>
 				<key>escaping</key>
-				<integer>68</integer>
+				<integer>102</integer>
 				<key>script</key>
-				<string>PATH=$PATH:/opt/bin/homebrew/
-./py3.sh con_manager.py "$1"</string>
+				<string>open 'alfredpreferences://navigateto/workflows&gt;resolvedependencies'</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
-				<string>con_manager.py</string>
+				<string></string>
 				<key>type</key>
 				<integer>5</integer>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
-			<string>F7B4ECCA-A12E-43D0-9793-514BAB692AF2</string>
+			<string>F8EAAE09-F987-4663-AADE-5A8EB1E9B8CF</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
@@ -129,14 +209,28 @@ Uebersicht-Widget: https://github.com/Acidham/uebersicht-airpod-status
 			<key>xpos</key>
 			<real>30</real>
 			<key>ypos</key>
-			<real>35</real>
+			<real>45</real>
 		</dict>
-		<key>F7B4ECCA-A12E-43D0-9793-514BAB692AF2</key>
+		<key>508A3778-0A75-475B-9B1F-EFDEAE4D29DA</key>
 		<dict>
 			<key>xpos</key>
 			<real>220</real>
 			<key>ypos</key>
-			<real>35</real>
+			<real>65</real>
+		</dict>
+		<key>F7B4ECCA-A12E-43D0-9793-514BAB692AF2</key>
+		<dict>
+			<key>xpos</key>
+			<real>375</real>
+			<key>ypos</key>
+			<real>25</real>
+		</dict>
+		<key>F8EAAE09-F987-4663-AADE-5A8EB1E9B8CF</key>
+		<dict>
+			<key>xpos</key>
+			<real>375</real>
+			<key>ypos</key>
+			<real>200</real>
 		</dict>
 	</dict>
 	<key>userconfigurationconfig</key>
@@ -144,7 +238,7 @@ Uebersicht-Widget: https://github.com/Acidham/uebersicht-airpod-status
 	<key>variablesdontexport</key>
 	<array/>
 	<key>version</key>
-	<string>1.3.5</string>
+	<string>1.3.6</string>
 	<key>webaddress</key>
 	<string>https://github.com/Acidham/alfred-airpod-connector</string>
 </dict>
