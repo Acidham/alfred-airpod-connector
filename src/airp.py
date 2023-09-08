@@ -76,7 +76,7 @@ def is_tool_installed(tool_name):
 def main():
     query = Tools.getArgv(1)
     wf = Items()
-    if is_tool_installed("blueutil"):
+    if is_tool_installed("blueutilx"):
         for ap_name, status in get_paired_airpods().items():
             adr: str = status.get('address')
             ap_type: str = status.get('prod_label')
@@ -98,6 +98,7 @@ def main():
             title="The workflow requires BLUEUTIL",
             subtitle="Press ENTER to let Alfred resolve dependencies...",
             valid=True,
+            arg="blueutil"
         )
         wf.addItem()
     wf.write()
