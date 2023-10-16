@@ -11,6 +11,7 @@ AIRPD_PRODUCT_INDX = {
     8202: "airpodmax",
     8206: "airpodpro",
     8212: "airpodpro2",
+    8228: "airpodpro2",
     8194: "airpod1",
     8207: "airpod2",
     8211: "airpod3",
