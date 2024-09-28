@@ -15,6 +15,7 @@ AIRPD_PRODUCT_INDX = {
     8194: "airpod1",
     8207: "airpod2",
     8211: "airpod3",
+    8219: "airpod4",
     8203: "powerbeatspro"
 }
 
