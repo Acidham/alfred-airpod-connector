@@ -10,7 +10,7 @@ Another Alfred AirPod Connector with zero configuration. Supports more than one 
 
 ## Supported headphones
 
-- AirPod1/2/3
+- AirPod1/2/3/4
 - AirPod Pro 1/2
 - AirPod Max
 - Powerbeats Pro
